@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UserSecretsId>3c781988-35cf-44d2-81fa-a3db63618011</UserSecretsId>
+		<DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
+		<DockerfileContext>..\..\..</DockerfileContext>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="MediatR" Version="12.0.1" />
+		<PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.1.0" />
+		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.11" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\Application\Hahn.Application.Contract\Hahn.Application.Contract.csproj" />
+		<ProjectReference Include="..\..\Application\Hahn.Application.Services\Hahn.Application.Services.csproj" />
+		<ProjectReference Include="..\..\Domain\Hahn.Domain.Model\Hahn.Domain.Model.csproj" />
+		<ProjectReference Include="..\..\Infrastructure\Hahn.Infrastructure.EfCore\Hahn.Infrastructure.EfCore.csproj" />
+	</ItemGroup>
+
+</Project>

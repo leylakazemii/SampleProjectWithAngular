@@ -1,0 +1,33 @@
+version: '3.7'
+
+services:
+  customer-web-api:
+    container_name: webapi
+    build:
+      context: . 
+      dockerfile: src/Presentation/Hahn.WebApi/Dockerfile
+    ports:
+      - "5010:80"
+    environment:
+      ASPNETCORE_ENVIRONMENT: 'Development'
+      DOTNET_ENVIRONMENT: 'Development'
+    depends_on:
+      - sqldb
+    networks:
+      - hahn
+
+  sqldb:
+    image: mcr.microsoft.com/mssql/server
+    container_name: sqldb
+    volumes:
+      - ./data:/var/opt/mssql/data
+    environment:
+      SA_PASSWORD: "Aa12345678"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1434:1433"
+    networks:
+      - hahn
+
+networks:
+  hahn:
