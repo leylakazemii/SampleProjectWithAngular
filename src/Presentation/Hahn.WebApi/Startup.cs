@@ -1,8 +1,9 @@
 using Hahn.Application.Services.Customers.Commands;
 using Hahn.Domain.Model.Customers;
+using Hahn.Infrastructure.EfCore.Context;
 using Hahn.Infrastructure.EfCore.Repository;
-using Hahn.Infrastructure.EfCore.Repository.Data;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace Hahn.WebApi
 
@@ -21,7 +22,8 @@ namespace Hahn.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddDbContext<DbContextClass>();
+            services.AddDbContext<AppDbContext>(options =>
+                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped<ICustomerRepository, CustomerEfRepository>();
             services.AddMediatR(cfg =>
             {

@@ -1,14 +1,14 @@
 ﻿using Hahn.Domain.Model.Customers;
-using Hahn.Infrastructure.EfCore.Repository.Data;
+using Hahn.Infrastructure.EfCore.Context;
 using Microsoft.EntityFrameworkCore;
 
 namespace Hahn.Infrastructure.EfCore.Repository
 {
     public class CustomerEfRepository : ICustomerRepository
     {
-        private readonly DbContextClass _dbContext;
+        private readonly AppDbContext _dbContext;
 
-        public CustomerEfRepository(DbContextClass dbContext)
+        public CustomerEfRepository(AppDbContext dbContext)
         {
             _dbContext = dbContext;
         }
